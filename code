@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+#include <regex>
+using namespace std;
+
+class Computer {
+public:
+    Computer(const string processor,int ram): processor(processor), ram(ram) {};
+    void RunProgram(const string & ProgramName) {
+        cout << "Running computer" << ProgramName<< endl;
+    }
+    void print() {
+        cout<<processor<<" "<<ram<<endl;
+    }
+
+
+private:
+    string processor;
+    int ram;
+};
+class Laptop: public Computer {
+public:
+    Laptop(const string  processor,int  ram,double BatteryLevel): Computer(processor,ram), BatteryLevel(BatteryLevel) {};
+    void ChargeBattery(const double & amount ) {
+        BatteryLevel += amount;
+        cout << "Рівень заряду батареї:" << BatteryLevel << endl;
+    }
+
+
+private:
+    double BatteryLevel;
+
+};
+int main() {
+    Laptop laptop("M2 pro ", 32, 50.0);
+    laptop.print();
+    laptop.ChargeBattery(50.0);
+}
